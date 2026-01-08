@@ -1,0 +1,17 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "CPSC 411",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// "image": "mcr.microsoft.com/devcontainers/base:noble",
+	"runArgs": ["--platform=linux/amd64" ],
+	"build": {
+		"dockerfile": "Dockerfile",
+		"options": [
+			"--platform=linux/amd64"
+		]
+	},
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:/usr/racket/bin"
+	}
+}
