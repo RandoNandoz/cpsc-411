@@ -13,9 +13,9 @@ We want to compile this to an x64 instruction sequence, as a string.
 ;; mov-lang-p1 must pass the test below.
 
 ;; EXAMPLES:
-(define mov-lang-p1 (void))
-(define mov-lang-p2 (void))
-(define mov-lang-p3 (void))
+(define mov-lang-p1 '(begin (set! rax 5) (set! rax 10)))
+(define mov-lang-p2 '(begin (set! rax 7) (set! rcx 4) (rbx 72093)))
+(define mov-lang-p3 '(begin))
 
 (module+ test
  (require rackunit)
@@ -31,7 +31,12 @@ We want to compile this to an x64 instruction sequence, as a string.
 
 ;; mov-lang -> string?
 (define (compile-mov-lang e)
-  (void))
+  (define (compile-mov-lang-i i)
+    (match i
+      [`(set! ,reg ,n)
+        (format "mov ~a, ~a" reg n)]))
+  (match e
+    [`(begin ,i ...) (string-join (map compile-mov-lang-i i) "\n")]))
 
 (module+ test
   (require rackunit)
