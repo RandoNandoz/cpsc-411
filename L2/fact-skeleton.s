@@ -9,16 +9,24 @@
 ; The result should be left in rax and control should be left in fact_done when
 ; complete.
 main:
-  ...
+  mov rax, 5
+  mov rcx, 1
+  jmp fact
 
-; Precondition: ?? Natural ?? Natural
-; Postcondition: ?? Natural ??
-; Invariant: ?? for some number m
-;   (fact n) * acc = (fact^ (m - n) acc) = (fact (n + m))
+; Precondition: rax is the first argument and stores a sNatural
+;               rcx is the second argument, also a Natural
+; Postcondition: rdi will contain a Natural
+; Invariant:  for some number m
+;   (fact rax) * rcx = (fact^ (m - rax) rcx) = (fact (rax + m))
 fact:
-  ...
+  cmp rax, 0
+  je fact_done
+  imul rcx, rax
+  dec rax
+  jmp fact
 
 fact_done:
+  mov rdi, rcx 
 exit:
   mov rax, 60
   syscall
