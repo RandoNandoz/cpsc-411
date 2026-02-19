@@ -1,0 +1,19 @@
+- compilers are software that transform from one source to another (while preserving meaning!)
+
+- programming languages formalize abstraction boundaries
+    - interesting part is what we cannot express?
+
+- approaches to building a compiler
+    - bottom up from target -> source
+        - identify limitations, weaknesses, cons, and try
+            to fix them
+    - start from source to ... target
+        - top down, transform to new abstractions
+    - start from transformations?
+        - ???
+
+- our target language: x64
+    - popular, performant
+    - risc-v -> bad because we dont get much performance
+    - llvm -> not much learning :(
+    - 
